@@ -1,0 +1,65 @@
+ShipaFramework: devops-toolkit
+Resources:
+   General:
+      Setup:
+         Force: false
+         Default: false
+         Public: true
+         Provisioner: shipa
+# TODO: Continue
+      Plan:
+         Name: plan1
+      Security: 
+         Disable-scan: false
+         Scan-Platform-Layers: true
+         Ignore-components: 
+            - busybox
+            - bash
+            - curl
+            - dpkg
+         Ignore-CVES: 
+            - CVE-xxxx-xxxx
+            - CVE-xxxx-xxxx 
+      Access: 
+         Append: 
+            - team1
+            - team2
+            - teamX
+         Blacklist:
+            - team3
+            - teamN
+      Services:
+         Append: 
+            - service1
+            - service2
+            - serviceX
+         Blacklist:
+            - service3
+            - serviceN
+      Volumes: 
+         -  Name: volume-X
+            PlanName: kube1
+            Option1: capacity=1Gi
+            Option2: access-modes=ReadWriteOnce
+
+         -  Name: volume-Y
+            PlanName: kube1
+            Option1: capacity=5Gi
+            Option2: access-modes=ReadWriteOnce
+
+         -  Name: volume-Z
+            PlanName: kube1
+            Option1: capacity=100Gi
+            Option2: access-modes=ReadWriteOnce
+      AppQuota: 
+         Limit: 3
+   ShipaNode:
+      Drivers: 
+         - amazonec2
+         - google
+      AutoScale: 
+         MaxContainer: 0
+         MaxMemory: 0
+         ScaleDown: 1.33
+         Rebalance: true
+
