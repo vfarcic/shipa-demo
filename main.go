@@ -16,6 +16,6 @@ func main() {
 }
 
 func hello(res http.ResponseWriter, req *http.Request) {
-    fmt.Fprintln(res, "This is DevOps Toolkit")
+    fmt.Fprintln(res, "This is something")
 }
 
